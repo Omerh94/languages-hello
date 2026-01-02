@@ -34,9 +34,11 @@ pipeline {
 
     post {
         always {
-            mail to: 'omerhorovitz1@gmail.com',
-                 subject: "Jenkins result - Selected: ${params.LANG}",
-                 body: "Pipeline finished.\nSelected language: ${params.LANG}\nJob: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nURL: ${env.BUILD_URL}"
+            echo "=== EMAIL SIMULATION ==="
+            echo "To: your@email.com"
+            echo "Subject: Jenkins result for ${params.LANG}"
+            echo "Body: Selected language = ${params.LANG}, Build = ${env.BUILD_NUMBER}, Status = ${currentBuild.currentResult}"
+            echo "========================"
         }
     }
 }
